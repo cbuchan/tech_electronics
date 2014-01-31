@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+//= require wice_grid
+//= require jquery-ui
+//= require jquery.ui.all
+//= require jquery.ui.datepicker

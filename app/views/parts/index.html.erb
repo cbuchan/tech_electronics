@@ -1,0 +1,15 @@
+<% content_for :title do %>Parts Inventory<% end %>
+
+<div class="container">
+	<h2>Parts Inventory</h2>
+
+	<%= link_to new_part_path do %>
+		<button type="button" class="btn btn-default btn-md">
+			<span class="glyphicon glyphicon-plus"></span> New Part
+		</button>
+	<% end %>
+
+	<p>
+
+	<%= render 'grid' %>
+</div>

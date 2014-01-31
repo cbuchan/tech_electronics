@@ -1,0 +1,23 @@
+<div class="container">
+	<h2>
+		<%= @part.name %>
+	</h2>
+	 
+	<p>
+	  <strong>Quantity:</strong>
+	  <%= @part.quantity %>
+	</p>
+
+	<p>
+	  <strong>Unit Price:</strong>
+	  <%= number_to_currency(@part.price, :unit => "$") %>
+	</p>
+
+	<p>
+	  <strong>Link:</strong>
+	  <%= @part.link %>
+	</p>
+
+	<a class="btn btn-default" href= <%= parts_path %> role="button">&laquo; Back </a>
+	<a class="btn btn-default" href= <%= edit_part_path %> role="button">Edit &raquo;</a>
+</div>
