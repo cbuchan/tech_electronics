@@ -1,0 +1,15 @@
+<% content_for :title do %>Request Parts<% end %>
+
+<div class="container">
+	<h2>Requested Parts</h2>
+
+	<%= link_to new_part_path do %>
+		<button type="button" class="btn btn-default btn-md">
+			<span class="glyphicon glyphicon-plus"></span> Request Part
+		</button>
+	<% end %>
+
+	<p>
+
+	<%= render 'grid_request' %>
+</div>

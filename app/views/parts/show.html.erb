@@ -18,6 +18,15 @@
 	  <%= @part.link %>
 	</p>
 
+	<strong>Category:</strong>
+	  <%= @part.category.name if @part.category %>
+	</p>
+
+	<p>
+	  <strong>Requested:</strong>
+	  <%= @part.requested ? 'Yes' : 'No' %>
+	</p>
+
 	<a class="btn btn-default" href= <%= parts_path %> role="button">&laquo; Back </a>
 	<a class="btn btn-default" href= <%= edit_part_path %> role="button">Edit &raquo;</a>
 </div>

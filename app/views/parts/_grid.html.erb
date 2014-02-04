@@ -4,6 +4,10 @@
     link_to part.name, part_path(part)
   end
 
+  g.column name: 'Category', attribute: 'name', model: 'Category', filter: false do |part|
+    part.category.name if part.category
+  end
+
   g.column name: 'Quantity', attribute: 'quantity', filter: false
 
   g.column name: 'Price', attribute: 'price', filter: false do |part|

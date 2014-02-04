@@ -19,8 +19,17 @@ class PartsController < ApplicationController
 	end
 
 	def index
-		@parts_grid = initialize_grid(Part)
-		@parts = Part.all
+		@parts_grid = initialize_grid(Part, 
+			:conditions => {:requested => false},
+			:include => [:category])
+		@parts = Part.where(requested: false)
+	end
+
+	def index_request
+		@parts_grid = initialize_grid(Part, 
+			:conditions => {:requested => true},
+			:include => [:category])
+		@parts = Part.where(requested: true)
 	end
 
 	def edit
@@ -30,7 +39,7 @@ class PartsController < ApplicationController
 	def update
 		@part = Part.find(params[:id])
 
-		if @part.update(params[:part].permit(:name, :quantity, :link, :price))
+		if @part.update(params[:part].permit(:name, :quantity, :link, :price, :requested, :category_id))
 			redirect_to @part
 		else
 			render 'edit'
@@ -46,7 +55,7 @@ class PartsController < ApplicationController
 
 	private
 		def part_params
-			params.require(:part).permit(:name, :quantity, :link, :price)
+			params.require(:part).permit(:name, :quantity, :link, :price, :requested, :category_id)
 		end
 
 end

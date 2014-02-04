@@ -1,3 +1,5 @@
+<div class="container theme-showcase" role="main">
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -9,9 +11,15 @@
     <%= f.input :password_confirmation, :required => true %>
   </div>
 
+  <p>
+
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
+
+  <p>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

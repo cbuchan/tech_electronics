@@ -1,0 +1,21 @@
+<%= grid(@parts_grid, show_filters: :when_filtered) do |g|
+
+  g.column name: 'Name', attribute: 'name', filter: false do |part|
+    link_to part.name, part_path(part)
+  end
+
+  g.column name: 'Category', attribute: 'category_id', filter: false do |part|
+    part.category.name if part.category
+  end
+
+  g.column name: 'Quantity', attribute: 'quantity', filter: false
+
+  g.column name: 'Price', attribute: 'price', filter: false do |part|
+    number_to_currency(part.price, :unit => "$")
+  end
+
+  g.column name: 'Link' do |part|
+    link_to part.link, part.link, :target => "_blank"
+  end
+  
+end -%>

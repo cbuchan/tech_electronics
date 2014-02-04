@@ -17,6 +17,7 @@ gem "jquery-ui-rails"
 gem "haml-rails"
 gem 'devise'
 gem "devise_shibboleth_authenticatable"
+gem 'meta_request', '0.2.3'
 
 group :development do
   gem 'better_errors'
