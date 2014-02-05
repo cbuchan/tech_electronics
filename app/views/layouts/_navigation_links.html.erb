@@ -1,4 +1,10 @@
 <%# add navigation links to this file %>
-<li><%= link_to 'Parts List', parts_path %></li>
+<li><%= link_to 'Inventory', parts_path %></li>
 <li><%= link_to 'Request Parts', parts_request_path  %></li>
+
+<% if admin? %>
+<li><%= link_to 'Categories', categories_path  %></li>
+<li><%= link_to 'Users', users_path  %></li>
+<% end %>
+
 <li><%= link_to 'About', page_path('about') %></li>

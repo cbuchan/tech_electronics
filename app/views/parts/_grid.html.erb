@@ -5,25 +5,31 @@
   end
 
   g.column name: 'Category', attribute: 'name', model: 'Category', filter: false do |part|
-    part.category.name if part.category
+    link_to part.category.name, category_path(part.category) if part.category
   end
 
   g.column name: 'Quantity', attribute: 'quantity', filter: false
 
-  g.column name: 'Price', attribute: 'price', filter: false do |part|
-    number_to_currency(part.price, :unit => "$")
+  if admin?
+    g.column name: 'Price', attribute: 'price', filter: false do |part|
+      number_to_currency(part.price, :unit => "$")
+    end
   end
 
   g.column name: 'Link' do |part|
-    link_to part.link, part.link, :target => "_blank"
+    link_to part.link, part.link, :target => "_blank" if part.link
   end
 
-  g.column do |part|
-    link_to '<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</button>'.html_safe, edit_part_path(part), {:style=>'color:#000000;', :class => "css_class"}
+  if current_user.try(:admin?)
+    g.column do |part|
+      link_to '<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</button>'.html_safe, edit_part_path(part), {:style=>'color:#000000;', :class => "css_class"}
+    end
   end
 
-  g.column do |part|
-    link_to '<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</button>'.html_safe, part_path(part), method: :delete, data: { confirm: 'Are you sure?' }
-  end
+  if current_user.try(:admin?)
+    g.column do |part|
+      link_to '<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</button>'.html_safe, part_path(part), method: :delete, data: { confirm: 'Are you sure?' }
+    end
+  end  
 
 end -%>

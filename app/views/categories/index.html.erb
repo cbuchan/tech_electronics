@@ -1,0 +1,15 @@
+<% content_for :title do %>Categories<% end %>
+
+<div class="container">
+	<h2>Category List</h2>
+
+	<%= link_to new_category_path do %>
+		<button type="button" class="btn btn-default btn-md">
+			<span class="glyphicon glyphicon-plus"></span> New Category
+		</button>
+	<% end %>
+
+	<p>
+
+	<%= render 'grid' %>
+</div>

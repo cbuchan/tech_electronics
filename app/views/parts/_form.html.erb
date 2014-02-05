@@ -33,14 +33,12 @@
 
   <div class="field">
     <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-    <%# f.collection_select :category_id, Category.all.collect,  :id, :name %>
-    <%# f.collection_select :category, Category.all, :id, :name, {:prompt => 'Please select a category...'} %>
+    <%= f.collection_select :category_id, Category.all.order(:name), :id, :name %>
   </div>
 
   <div class="field">
     <%= f.label :requested %> 
-    <%= f.check_box :requested, {}, true, false %> <br />
+    <%= f.check_box :requested %> <br />
   </div>
  
   <p>

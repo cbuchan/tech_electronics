@@ -5,7 +5,7 @@
   end
 
   g.column name: 'Category', attribute: 'category_id', filter: false do |part|
-    part.category.name if part.category
+    link_to part.category.name, category_path(part.category) if part.category
   end
 
   g.column name: 'Quantity', attribute: 'quantity', filter: false
@@ -15,7 +15,7 @@
   end
 
   g.column name: 'Link' do |part|
-    link_to part.link, part.link, :target => "_blank"
+    link_to part.link, part.link, :target => "_blank" if part.link
   end
   
 end -%>

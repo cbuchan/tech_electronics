@@ -1,7 +1,18 @@
 class PartsController < ApplicationController
 
+	before_filter :authorize, :except => [:index, :index_request, :show]
+
 	def new
+		if !defined? @part
+			@part = Part.new
+		end
+	end
+
+	def new_request
 		@part = Part.new
+		@part.requested = true
+
+		render 'new'
 	end
  
 	def create

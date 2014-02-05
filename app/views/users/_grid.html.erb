@@ -1,0 +1,11 @@
+<%= grid(@users_grid, show_filters: :when_filtered) do |g|
+
+  g.column name: 'Email', attribute: 'email', filter: false do |user|
+    link_to user.email, user_path(user)
+  end
+
+  g.column name: 'Admin', attribute: 'admin', filter: false do |user|
+    user.admin? ? 'Yes' : 'No'
+  end
+
+end -%>
